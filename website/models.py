@@ -20,9 +20,9 @@ class Table():
     def __init__(self):
         self1 = self
 
-    def query(self1, filt, entry_pos='one'):
+    def query(filt, entry_pos='one'):
         cursor = cnx.cursor()
-        self1 = self
+        
         cursor.execute(
             f"select * from {self._tble} where {self._filt} {filt}")
         col_name = cursor.column_names
@@ -44,7 +44,7 @@ class Table():
         for k, v in value_dic.items():
             setattr(self, k, v)
         cursor.close()
-        return self1
+        return self
 
     def add(self):
         cursor = cnx.cursor()
